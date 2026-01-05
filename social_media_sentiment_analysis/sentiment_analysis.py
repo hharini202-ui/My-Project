@@ -1,11 +1,9 @@
 import pandas as pd
 from textblob import TextBlob
 
-# Load your dataset
+# Load dataset
 df = pd.read_csv("data/social_media_data.csv")
 
-# If you already have a Sentiment column, you can skip this step.
-# Otherwise, recompute sentiment from Text column:
 def get_sentiment(text):
     analysis = TextBlob(str(text))
     polarity = analysis.sentiment.polarity
@@ -16,12 +14,9 @@ def get_sentiment(text):
     else:
         return "Neutral"
 
-# Uncomment if you want to recompute:
-# df["Sentiment"] = df["Text"].apply(get_sentiment)
-
-# Save results
 df.to_csv("data/sentiment_results.csv", index=False)
 print(df.head())
+
 
 
 
